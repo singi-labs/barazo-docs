@@ -9,16 +9,16 @@ Documentation site for Barazo at docs.barazo.forum. Built with Fumadocs (Next.js
 
 ## Tech Stack
 
-| Component | Technology |
-|-----------|-----------|
-| Framework | Fumadocs (Next.js 16 / React 19 / TypeScript strict) |
-| Styling | TailwindCSS |
-| API docs | fumadocs-openapi (auto-generated from OpenAPI spec) |
-| Type docs | fumadocs-typescript (auto-generated from source) |
-| Search | Orama (self-hosted, audience-scoped) |
-| Icons | Phosphor Icons |
-| Typography | Source Sans 3 / Source Code Pro (self-hosted) |
-| Output | Static export (zero server runtime) |
+| Component  | Technology                                           |
+| ---------- | ---------------------------------------------------- |
+| Framework  | Fumadocs (Next.js 16 / React 19 / TypeScript strict) |
+| Styling    | TailwindCSS                                          |
+| API docs   | fumadocs-openapi (auto-generated from OpenAPI spec)  |
+| Type docs  | fumadocs-typescript (auto-generated from source)     |
+| Search     | Orama (self-hosted, audience-scoped)                 |
+| Icons      | Phosphor Icons                                       |
+| Typography | Source Sans 3 / Source Code Pro (self-hosted)        |
+| Output     | Static export (zero server runtime)                  |
 
 ## What This Repo Does
 
