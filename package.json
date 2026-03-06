@@ -1,11 +1,11 @@
 {
-  "name": "@barazo-forum/docs",
+  "name": "@singi-labs/docs",
   "version": "0.1.0",
   "private": true,
   "description": "Documentation site for Barazo (docs.barazo.forum)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/barazo-forum/barazo-docs.git"
+    "url": "https://github.com/singi-labs/barazo-docs.git"
   },
   "license": "MIT",
   "engines": {

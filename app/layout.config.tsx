@@ -23,7 +23,7 @@ export const baseOptions: BaseLayoutProps = {
       </>
     ),
   },
-  githubUrl: 'https://github.com/barazo-forum',
+  githubUrl: 'https://github.com/singi-labs',
   links: [
     {
       text: 'Forum',

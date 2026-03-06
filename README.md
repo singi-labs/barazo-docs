@@ -1,9 +1,9 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/barazo-forum/.github/main/assets/logo-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/barazo-forum/.github/main/assets/logo-light.svg">
-  <img alt="Barazo Logo" src="https://raw.githubusercontent.com/barazo-forum/.github/main/assets/logo-dark.svg" width="120">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/singi-labs/.github/main/assets/logo-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/singi-labs/.github/main/assets/logo-light.svg">
+  <img alt="Barazo Logo" src="https://raw.githubusercontent.com/singi-labs/.github/main/assets/logo-dark.svg" width="120">
 </picture>
 
 # Barazo Docs
@@ -22,7 +22,7 @@
 
 ## Overview
 
-Developer and admin documentation for [Barazo](https://github.com/barazo-forum), hosted at [docs.barazo.forum](https://docs.barazo.forum). Built with [Fumadocs](https://fumadocs.vercel.app/) (Next.js). API reference is auto-generated from the OpenAPI spec; TypeScript type docs are auto-generated from lexicon source files.
+Developer and admin documentation for [Barazo](https://github.com/singi-labs), hosted at [docs.barazo.forum](https://docs.barazo.forum). Built with [Fumadocs](https://fumadocs.vercel.app/) (Next.js). API reference is auto-generated from the OpenAPI spec; TypeScript type docs are auto-generated from lexicon source files.
 
 ---
 
@@ -65,7 +65,7 @@ Audience-scoped sidebar tabs (Developer / Admin) provide separate navigation tre
 Prerequisites: Node.js 24 LTS, pnpm.
 
 ```bash
-git clone https://github.com/barazo-forum/barazo-docs.git
+git clone https://github.com/singi-labs/barazo-docs.git
 cd barazo-docs
 pnpm install
 pnpm dev
@@ -82,7 +82,7 @@ pnpm lint         # ESLint
 pnpm typecheck    # TypeScript strict mode
 ```
 
-See [CONTRIBUTING.md](https://github.com/barazo-forum/.github/blob/main/CONTRIBUTING.md) for contribution guidelines.
+See [CONTRIBUTING.md](https://github.com/singi-labs/.github/blob/main/CONTRIBUTING.md) for contribution guidelines.
 
 **Key standards:**
 
@@ -105,22 +105,22 @@ Two categories of documentation are generated at build time rather than written 
 
 ## Related Repositories
 
-| Repository                                                           | Description                                        | License     |
-| -------------------------------------------------------------------- | -------------------------------------------------- | ----------- |
-| [barazo-api](https://github.com/barazo-forum/barazo-api)             | AppView backend (Fastify, PostgreSQL, AT Protocol) | AGPL-3.0    |
-| [barazo-web](https://github.com/barazo-forum/barazo-web)             | Forum frontend (Next.js, TailwindCSS)              | MIT         |
-| [barazo-lexicons](https://github.com/barazo-forum/barazo-lexicons)   | AT Protocol schemas for forum data                 | MIT         |
-| [barazo-deploy](https://github.com/barazo-forum/barazo-deploy)       | Docker Compose templates for self-hosting          | MIT         |
-| [barazo-website](https://github.com/barazo-forum/barazo-website)     | Marketing site (Astro)                             | Proprietary |
-| [barazo-workspace](https://github.com/barazo-forum/barazo-workspace) | Project coordination and shared tooling            | MIT         |
+| Repository                                                         | Description                                        | License     |
+| ------------------------------------------------------------------ | -------------------------------------------------- | ----------- |
+| [barazo-api](https://github.com/singi-labs/barazo-api)             | AppView backend (Fastify, PostgreSQL, AT Protocol) | AGPL-3.0    |
+| [barazo-web](https://github.com/singi-labs/barazo-web)             | Forum frontend (Next.js, TailwindCSS)              | MIT         |
+| [barazo-lexicons](https://github.com/singi-labs/barazo-lexicons)   | AT Protocol schemas for forum data                 | MIT         |
+| [barazo-deploy](https://github.com/singi-labs/barazo-deploy)       | Docker Compose templates for self-hosting          | MIT         |
+| [barazo-website](https://github.com/singi-labs/barazo-website)     | Marketing site (Astro)                             | Proprietary |
+| [barazo-workspace](https://github.com/singi-labs/barazo-workspace) | Project coordination and shared tooling            | MIT         |
 
 ---
 
 ## Community
 
 - **Website:** [barazo.forum](https://barazo.forum)
-- **Discussions:** [GitHub Discussions](https://github.com/orgs/barazo-forum/discussions)
-- **Issues:** [Report bugs](https://github.com/barazo-forum/barazo-docs/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/orgs/singi-labs/discussions)
+- **Issues:** [Report bugs](https://github.com/singi-labs/barazo-docs/issues)
 
 ---
 
