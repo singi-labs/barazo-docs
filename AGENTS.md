@@ -65,8 +65,8 @@ Open-source forum software built on the [AT Protocol](https://atproto.com/). Por
 
 **Always check for existing work before implementing anything:**
 
-1. Search for open PRs that may already address the issue: `gh pr list --repo singi-labs/<repo> --state open`
-2. Search for related branches: `gh api repos/singi-labs/<repo>/branches --paginate`
+1. Search for open PRs that may already address the issue: `gh pr list --repo singi-labs/barazo-docs --state open`
+2. Search for related branches: `gh api repos/singi-labs/barazo-docs/branches --paginate`
 3. Scan the codebase for partial implementations of the feature
 4. Check closed PRs for previously attempted work
 
@@ -80,16 +80,16 @@ All changes go through Pull Requests -- never commit directly to `main`. Branch 
 
 ```bash
 # Create a worktree for your branch
-git worktree add /tmp/<repo>-<branch-name> -b <branch-name> origin/main
+git worktree add /tmp/barazo-docs-<branch-name> -b <branch-name> origin/main
 
 # Work in the worktree
-cd /tmp/<repo>-<branch-name>
+cd /tmp/barazo-docs-<branch-name>
 
 # When done, remove the worktree
-git worktree remove /tmp/<repo>-<branch-name>
+git worktree remove /tmp/barazo-docs-<branch-name>
 ```
 
-Never work directly in the main checkout (`/singi-labs/repos/<repo>/`). Always create a worktree per issue. Clean up the worktree after the PR is merged.
+Never work directly in the main checkout (`/singi-labs/repos/barazo-docs/`). Always create a worktree per issue. Clean up the worktree after the PR is merged.
 
 ### AT Protocol Context
 
