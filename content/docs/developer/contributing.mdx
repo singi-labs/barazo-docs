@@ -1,0 +1,114 @@
+---
+title: Contributing to Barazo
+description: Local development setup for Barazo, the repositories that make up the project, and where the shared contributor process lives.
+---
+
+Barazo is open source and built in the open. This page covers **Barazo-specific
+local setup** and how the repositories fit together. The shared process that applies
+to every Singi Labs repo (the CLA, review flow, conventions, and engineering
+standards) lives once in the org, linked below, so it never drifts out of sync.
+
+## Start here (the shared process)
+
+Read these first. They apply to all Singi Labs repos, not just Barazo:
+
+- [Contributing guide](https://github.com/singi-labs/.github/blob/main/CONTRIBUTING.md): CLA, branch/PR workflow, review, conventional commits.
+- [The engineering harness](https://github.com/singi-labs/.github/tree/main/engineering): how we engineer with AI agents, and the [engineering standards](https://github.com/singi-labs/.github/tree/main/engineering/standards).
+- [Agent instructions](https://github.com/singi-labs/.github/blob/main/engineering/agent-instructions.md): if you use a coding agent, drop this into your local clone.
+
+## The repositories
+
+Barazo is split across several repos, each with a clear job and its own license:
+
+| Repo               | License        | What it holds                                           |
+| ------------------ | -------------- | ------------------------------------------------------- |
+| `barazo-workspace` | MIT            | Project coordination and the issue hub                  |
+| `barazo-api`       | AGPL-3.0       | AppView backend: Fastify, firehose indexing, REST API   |
+| `barazo-web`       | MIT            | Forum frontend: Next.js, Tailwind                       |
+| `barazo-lexicons`  | MIT            | `forum.barazo.*` schemas and generated TypeScript types |
+| `barazo-plugins`   | MIT            | Official plugins and the starter template               |
+| `barazo-deploy`    | MIT            | Docker Compose templates for self-hosting               |
+| `barazo-docs`      | CC BY-SA + MIT | This documentation site                                 |
+| `barazo-website`   | Proprietary    | Marketing site                                          |
+
+Most contributions land in `barazo-api`, `barazo-web`, or `barazo-lexicons`.
+
+## Where issues live
+
+**All issues go in `barazo-workspace`**, whichever repo the work ends up in. Labels
+like `repo:api` or `repo:web` mark where the change lands. A pull request in another
+repo references its workspace issue with `Fixes singi-labs/barazo-workspace#NN`.
+You can still open an issue on any repo if that's where you hit the problem, and we
+move it to the hub.
+
+## Prerequisites
+
+- **Node.js 24+**
+- **Docker + Docker Compose** (for local PostgreSQL, Valkey, and the firehose consumer)
+- **Git** and a GitHub account
+- Barazo repos use **pnpm**
+
+## Local setup
+
+### 1. Start the infrastructure
+
+The backend needs PostgreSQL, Valkey, and Tap (the firehose consumer). `barazo-deploy`
+runs them for you:
+
+```bash
+git clone https://github.com/singi-labs/barazo-deploy.git
+cd barazo-deploy
+docker compose -f docker-compose.dev.yml up -d
+```
+
+This starts the infrastructure only. You run the API and web app yourself, below.
+
+### 2. barazo-api
+
+```bash
+git clone https://github.com/singi-labs/barazo-api.git
+cd barazo-api
+pnpm install
+cp .env.example .env          # then fill the values (see .env.example)
+pnpm db:migrate
+pnpm dev
+```
+
+> **AT Protocol auth is OAuth, never app passwords.** This is an org-wide rule with
+> no exceptions. It applies to every script, service, and CI job that authenticates
+> against a PDS.
+
+### 3. barazo-web
+
+```bash
+git clone https://github.com/singi-labs/barazo-web.git
+cd barazo-web
+pnpm install
+pnpm dev                      # requires barazo-api running
+```
+
+### Verify before opening a PR
+
+Run this in whichever repo you changed, and show the output. Don't assert
+"passing" without it:
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+pnpm test
+```
+
+## Picking work
+
+Start with an issue tagged `good first issue` in `barazo-workspace`: small scope,
+clear acceptance criteria, low blast radius. Comment that you're taking it, branch
+from `main` (`feat/short-description`, one feature per branch), build it **with
+tests**, then open a PR linking the issue (`Fixes singi-labs/barazo-workspace#NN`).
+An automated reviewer posts a blocking check, then a maintainer reviews and merges.
+You can't merge your own PR. Every change gets a review.
+
+## Related
+
+- [Self-hosting: installation](/docs/self-hosted/installation): run a full instance
+- [Getting started as a user](/docs/using/index): the forum from the other side

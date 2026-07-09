@@ -1,0 +1,98 @@
+---
+title: Configuration
+description: Every Barazo environment variable, grouped by area, with whether it's required, its default, and what it does.
+---
+
+Barazo is configured through environment variables in your `.env` file. This page lists them by area. The ones you must set to get a forum running are covered in [Installation](/docs/self-hosted/installation). This page is the full reference.
+
+## Community identity
+
+| Variable           | Required | Default          | Description                                                    |
+| ------------------ | -------- | ---------------- | -------------------------------------------------------------- |
+| `COMMUNITY_NAME`   | Yes      | `"My Community"` | Display name for your forum                                    |
+| `COMMUNITY_DOMAIN` | Yes      | None             | Your domain (e.g. `forum.example.com`). Caddy uses it for SSL. |
+| `COMMUNITY_DID`    | No       | None             | AT Protocol DID. Created automatically during first-run setup. |
+| `COMMUNITY_MODE`   | No       | `single`         | `single` for one community, `global` for aggregator mode       |
+| `HOSTING_MODE`     | No       | `selfhosted`     | `selfhosted` or `saas`                                         |
+
+## Database (PostgreSQL)
+
+| Variable            | Required | Default | Description                                                                  |
+| ------------------- | -------- | ------- | ---------------------------------------------------------------------------- |
+| `POSTGRES_USER`     | Yes      | None    | PostgreSQL superuser name                                                    |
+| `POSTGRES_PASSWORD` | Yes      | None    | PostgreSQL superuser password                                                |
+| `POSTGRES_DB`       | Yes      | None    | Database name                                                                |
+| `POSTGRES_PORT`     | No       | `5432`  | Host port mapping (dev compose only)                                         |
+| `DATABASE_URL`      | Yes      | None    | API connection string. Format: `postgresql://user:pass@postgres:5432/dbname` |
+
+## Cache (Valkey)
+
+| Variable          | Required  | Default | Description                                         |
+| ----------------- | --------- | ------- | --------------------------------------------------- |
+| `VALKEY_PASSWORD` | Prod: Yes | None    | Valkey password. Dangerous commands are disabled.   |
+| `VALKEY_PORT`     | No        | `6379`  | Host port mapping (dev compose only)                |
+| `VALKEY_URL`      | No        | Auto    | API connection URL. Built automatically in compose. |
+
+## AT Protocol
+
+| Variable             | Required | Default              | Description                                                         |
+| -------------------- | -------- | -------------------- | ------------------------------------------------------------------- |
+| `RELAY_URL`          | No       | `wss://bsky.network` | Bluesky relay for the firehose                                      |
+| `TAP_ADMIN_PASSWORD` | Yes      | None                 | Tap admin API password                                              |
+| `TAP_PORT`           | No       | `2480`               | Host port mapping (dev compose only)                                |
+| `OAUTH_CLIENT_ID`    | Yes      | None                 | Your forum's public URL (e.g. `https://forum.example.com`)          |
+| `OAUTH_REDIRECT_URI` | Yes      | None                 | OAuth callback (e.g. `https://forum.example.com/api/auth/callback`) |
+
+## Frontend
+
+| Variable               | Required | Default                 | Description                                                                            |
+| ---------------------- | -------- | ----------------------- | -------------------------------------------------------------------------------------- |
+| `API_INTERNAL_URL`     | No       | `http://localhost:3000` | Internal API URL for server-side rendering. Set to `http://barazo-api:3000` in Docker. |
+| `NEXT_PUBLIC_SITE_URL` | Yes      | None                    | Public site URL (e.g. `https://forum.example.com`)                                     |
+
+## Image versions
+
+| Variable             | Required | Default  | Description                                    |
+| -------------------- | -------- | -------- | ---------------------------------------------- |
+| `BARAZO_API_VERSION` | No       | `latest` | API image tag. Pin to a version in production. |
+| `BARAZO_WEB_VERSION` | No       | `latest` | Web image tag. Pin to a version in production. |
+
+## Search
+
+| Variable                  | Required | Default | Description                                                            |
+| ------------------------- | -------- | ------- | ---------------------------------------------------------------------- |
+| `EMBEDDING_URL`           | No       | None    | Enables semantic search. Example: `http://ollama:11434/api/embeddings` |
+| `AI_EMBEDDING_DIMENSIONS` | No       | `768`   | Vector dimensions. Must match your embedding model.                    |
+
+Full-text search works with no configuration. Setting `EMBEDDING_URL` adds semantic search on top.
+
+## Encryption
+
+| Variable            | Required    | Default | Description                                                                                                                                |
+| ------------------- | ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `AI_ENCRYPTION_KEY` | Conditional | None    | AES-256-GCM key that encrypts bring-your-own-key API keys at rest. Required if BYOK features are used. Generate: `openssl rand -base64 32` |
+
+## Cross-posting
+
+| Variable                      | Required | Default | Description                                                                |
+| ----------------------------- | -------- | ------- | -------------------------------------------------------------------------- |
+| `FEATURE_CROSSPOST_FRONTPAGE` | No       | `false` | Enable Frontpage cross-posting. Bluesky cross-posting is always available. |
+
+## Plugins
+
+| Variable              | Required | Default                      | Description                           |
+| --------------------- | -------- | ---------------------------- | ------------------------------------- |
+| `PLUGINS_ENABLED`     | No       | `true`                       | Set to `false` to disable all plugins |
+| `PLUGIN_REGISTRY_URL` | No       | `https://registry.npmjs.org` | npm registry for plugin installation  |
+
+## Monitoring
+
+| Variable        | Required | Default | Description                                                    |
+| --------------- | -------- | ------- | -------------------------------------------------------------- |
+| `GLITCHTIP_DSN` | No       | None    | GlitchTip / Sentry DSN for error reporting                     |
+| `LOG_LEVEL`     | No       | `info`  | Pino level: `trace`, `debug`, `info`, `warn`, `error`, `fatal` |
+
+## Related
+
+- [Installation](/docs/self-hosted/installation): the setup walkthrough
+- [Getting started](/docs/self-hosted/getting-started): requirements and the quick path

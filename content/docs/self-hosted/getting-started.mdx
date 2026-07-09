@@ -1,0 +1,53 @@
+---
+title: Getting Started
+description: What you need to run your own Barazo forum, and a ten-minute path from a bare server to a live instance.
+---
+
+You can run a Barazo forum on your own server. It ships as a set of Docker containers you bring up with Docker Compose: database, cache, firehose consumer, API, web, and a reverse proxy that handles SSL for you.
+
+This page is the short version: what you need, and the fastest path to a running forum. For the full walkthrough, see [Installation](/docs/self-hosted/installation).
+
+## What you need
+
+- **A server** with a public IP. Minimum 2 vCPU, 4 GB RAM, 20 GB SSD. A Hetzner CX22 is a good, cheap fit.
+- **Linux**, with Ubuntu 22.04+ or Debian 12+ recommended.
+- **A domain name** with a DNS A record pointing at your server.
+- **Docker** v24+ and **Docker Compose** v2.
+- **SSH access** to the server.
+
+You'll also want an AT Protocol account (your Bluesky handle) to sign in as the first administrator once the forum is up.
+
+## The ten-minute path
+
+```bash
+# On your server, with Docker installed:
+git clone https://github.com/singi-labs/barazo-deploy.git
+cd barazo-deploy
+
+cp .env.example .env
+nano .env            # set your domain, community name, and passwords
+
+docker compose up -d
+```
+
+Caddy obtains an SSL certificate from Let's Encrypt on the first request, so give DNS a moment to propagate, then open `https://your-domain.com`. The first person to finish the setup wizard becomes the administrator.
+
+## What runs
+
+Six services come up together:
+
+| Service       | Role                                                            |
+| ------------- | --------------------------------------------------------------- |
+| PostgreSQL 16 | Primary database (with pgvector for search)                     |
+| Valkey 8      | Cache, sessions, rate limiting, queues                          |
+| Tap           | AT Protocol firehose consumer, filters `forum.barazo.*` records |
+| Barazo API    | The AppView backend                                             |
+| Barazo Web    | The Next.js frontend                                            |
+| Caddy         | Reverse proxy with automatic SSL                                |
+
+PostgreSQL and Valkey sit on an internal network only. From the outside, just ports 80 and 443 are open.
+
+## Next steps
+
+- [Installation](/docs/self-hosted/installation): the full walkthrough, with troubleshooting
+- [Configuration](/docs/self-hosted/configuration): every environment variable explained

@@ -2,5 +2,5 @@
   "title": "Self-Hosted Admin",
   "description": "Installation, configuration, and maintenance for self-hosted instances",
   "root": true,
-  "pages": ["index", "..."]
+  "pages": ["index", "---Get started---", "getting-started", "installation", "configuration", "..."]
 }

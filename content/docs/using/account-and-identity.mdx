@@ -1,0 +1,42 @@
+---
+title: Your Account and Identity
+description: How portable identity works on Barazo. Your handle, your DID, and the data store that holds everything you post.
+---
+
+Barazo doesn't create an account for you. You bring one from the AT Protocol network, and the forum reads and writes to it. That single idea changes how your data, your identity, and your history behave.
+
+## The three parts of your account
+
+**Your handle** is the name people see: `alice.bsky.social`, or a domain you own like `alice.com`. It's how you sign in and how others find you. You can change it without losing anything.
+
+**Your DID** is your permanent identifier. It looks like `did:plc:7brt3r7rokkjqc4wjgeovnyx` and it never changes, even if your handle does. Every post you make is tied to your DID, so your history holds together no matter what you rename yourself.
+
+**Your provider** (a Personal Data Server, or PDS) is where your data physically lives. Bluesky runs one, and so do many independent operators. You can run your own. Barazo talks to whichever provider hosts your account.
+
+## Where your posts live
+
+When you publish a topic or reply, Barazo writes it as a record in your provider, then indexes a copy so the forum can show it to everyone. The forum's copy is a cache. The original is yours.
+
+This is the opposite of a traditional forum, where your posts are rows in that forum's database and leaving means losing them. On Barazo, the forum is a lens over data you hold.
+
+## What this gets you
+
+- **Portability.** Move to a different provider and your posts, replies, and follows move with you. Your DID stays the same, so nothing breaks.
+- **One identity, many apps.** The same account works across every AT Protocol app. Your Barazo handle is your Bluesky handle.
+- **A real exit.** Leave a forum and you keep the record of everything you wrote. Nothing is stranded.
+
+## What a forum controls
+
+You own your posts, but each forum still runs its own space. A forum decides its categories, its rules, and its moderation. If a moderator removes your post from a forum, that hides it there. The original record still exists in your account, and you can post it elsewhere.
+
+Think of it as the difference between what you said and where it's shown. You own the former. Each community curates the latter.
+
+## Community identity
+
+Every Barazo forum has its own DID too, the same kind of identifier your account has. When you post to a forum, your record is tagged with that community's DID. That tag is permanent, which is how the network knows a post belongs to a given community even as it moves between providers and apps.
+
+## Related
+
+- [Getting started](/docs/using/index): sign in and post
+- [Profiles](/docs/using/features/profiles): what others see
+- [Staying safe](/docs/using/features/safety): blocking, muting, and reporting
