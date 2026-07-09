@@ -4,6 +4,8 @@
   "root": true,
   "pages": [
     "index",
+    "---Atmosphere basics---",
+    "what-is-the-atmosphere",
     "account-and-identity",
     "---Features---",
     "features/index",
