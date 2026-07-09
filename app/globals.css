@@ -89,13 +89,15 @@
    as page links, so sections don't read as sections. Style them as small
    uppercase headers in Barazo's purple accent (distinct from the cyan primary
    used for links) with a thin top border, so each section reads as a bounded
-   block. */
+   block. Radix step 11 is the readable-text step and auto-switches between
+   light and dark (the .dark scope redefines --purple-11), so no separate dark
+   override is needed. */
 #nd-sidebar p {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--purple-9);
+  color: var(--purple-11);
   margin-top: 1.5rem;
   padding-top: 0.75rem;
   border-top: 1px solid var(--color-fd-border);
@@ -104,9 +106,6 @@
   margin-top: 0.5rem;
   padding-top: 0;
   border-top: none;
-}
-.dark #nd-sidebar p {
-  color: var(--purple-dark-10);
 }
 
 /* Selection color */
