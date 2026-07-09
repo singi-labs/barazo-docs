@@ -111,7 +111,7 @@ Two categories of documentation are generated at build time rather than written 
 | [barazo-web](https://github.com/singi-labs/barazo-web)             | Forum frontend (Next.js, TailwindCSS)              | MIT         |
 | [barazo-lexicons](https://github.com/singi-labs/barazo-lexicons)   | AT Protocol schemas for forum data                 | MIT         |
 | [barazo-deploy](https://github.com/singi-labs/barazo-deploy)       | Docker Compose templates for self-hosting          | MIT         |
-| [barazo-website](https://github.com/singi-labs/barazo-website)     | Marketing site                             | Proprietary |
+| [barazo-website](https://github.com/singi-labs/barazo-website)     | Marketing site                                     | Proprietary |
 | [barazo-workspace](https://github.com/singi-labs/barazo-workspace) | Project coordination and shared tooling            | MIT         |
 
 ---
