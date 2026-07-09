@@ -1,0 +1,133 @@
+---
+title: Installation
+description: A step-by-step walkthrough for deploying a Barazo forum on your own server, from installing Docker to the first-run setup wizard.
+---
+
+This is the full walkthrough for deploying a Barazo forum. For the short version, see [Getting started](/docs/self-hosted/getting-started).
+
+## Prerequisites
+
+- **A VPS or dedicated server** with a public IP.
+  - Minimum: 2 vCPU, 4 GB RAM, 20 GB SSD (Hetzner CX22 recommended).
+  - Linux, with Ubuntu 22.04+ or Debian 12+ recommended.
+- **A domain name** with a DNS A record pointing at your server's IP.
+- **Docker** v24+ and **Docker Compose** v2.
+- **SSH access** to the server.
+
+## 1. Install Docker
+
+If Docker isn't installed yet:
+
+```bash
+# Official install script
+curl -fsSL https://get.docker.com | sh
+
+# Run docker without sudo
+sudo usermod -aG docker $USER
+
+# Log out and back in for the group change to take effect
+exit
+# SSH back in
+
+# Verify
+docker --version
+docker compose version
+```
+
+## 2. Clone the repository
+
+```bash
+git clone https://github.com/singi-labs/barazo-deploy.git
+cd barazo-deploy
+```
+
+## 3. Configure
+
+```bash
+cp .env.example .env
+nano .env   # or your editor of choice
+```
+
+At a minimum, set these:
+
+| Variable               | What to set                                 |
+| ---------------------- | ------------------------------------------- |
+| `COMMUNITY_NAME`       | Your forum's display name                   |
+| `COMMUNITY_DOMAIN`     | Your domain (e.g. `forum.example.com`)      |
+| `POSTGRES_PASSWORD`    | A strong random password                    |
+| `VALKEY_PASSWORD`      | A strong random password                    |
+| `TAP_ADMIN_PASSWORD`   | A strong random password                    |
+| `DATABASE_URL`         | Match the password to `POSTGRES_PASSWORD`   |
+| `OAUTH_CLIENT_ID`      | `https://your-domain.com`                   |
+| `OAUTH_REDIRECT_URI`   | `https://your-domain.com/api/auth/callback` |
+| `NEXT_PUBLIC_SITE_URL` | `https://your-domain.com`                   |
+
+Generate strong passwords with:
+
+```bash
+openssl rand -base64 24
+```
+
+Every variable, with defaults, is in the [Configuration reference](/docs/self-hosted/configuration).
+
+## 4. Start
+
+```bash
+docker compose up -d
+```
+
+This brings up all six services. The first run pulls several Docker images, so allow a few minutes on a slow connection.
+
+## 5. Verify
+
+```bash
+# Are the services up?
+docker compose ps
+
+# End-to-end check
+./scripts/smoke-test.sh https://your-domain.com
+```
+
+Services should report `healthy`. Caddy fetches an SSL certificate from Let's Encrypt on the first request, so open `https://your-domain.com` and you should see your forum.
+
+## 6. First-run setup
+
+The first person to finish the setup wizard becomes the community administrator. Open your forum and follow the prompts to:
+
+1. Sign in with your AT Protocol account (your Bluesky handle).
+2. Set the community name and description.
+3. Create your first categories.
+4. Configure moderation.
+
+## Troubleshooting
+
+**Caddy can't get an SSL certificate**
+
+- Check DNS points at your server: `dig +short your-domain.com`
+- Make sure ports 80 and 443 are open in your firewall.
+- Read Caddy's logs: `docker compose logs caddy`
+
+**A service won't start**
+
+- Read the logs: `docker compose logs`
+- Check `.env` for syntax errors and leftover `CHANGE_ME` values.
+
+**Database connection errors**
+
+- Confirm the password in `DATABASE_URL` matches `POSTGRES_PASSWORD`.
+- Check PostgreSQL's logs: `docker compose logs postgres`
+
+## Pinning versions
+
+In production, pin the image tags in your `.env` rather than tracking `latest`:
+
+```bash
+BARAZO_API_VERSION=1.0.0
+BARAZO_WEB_VERSION=1.0.0
+```
+
+The production compose file reads these and defaults to `latest` if they're unset.
+
+## Next steps
+
+- [Configuration](/docs/self-hosted/configuration): the full environment reference

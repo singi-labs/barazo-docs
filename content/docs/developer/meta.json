@@ -2,5 +2,5 @@
   "title": "Developer",
   "description": "API reference, plugin development, and integration guides",
   "root": true,
-  "pages": ["index", "..."]
+  "pages": ["index", "contributing", "brand-and-logo", "..."]
 }

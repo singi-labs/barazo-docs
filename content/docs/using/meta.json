@@ -1,0 +1,17 @@
+{
+  "title": "Using Barazo",
+  "description": "Sign in, post, and get the most out of a Barazo forum",
+  "root": true,
+  "pages": [
+    "index",
+    "account-and-identity",
+    "---Features---",
+    "features/index",
+    "features/topics-and-replies",
+    "features/reactions",
+    "features/search",
+    "features/notifications",
+    "features/profiles",
+    "features/safety"
+  ]
+}
