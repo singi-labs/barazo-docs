@@ -1,0 +1,5 @@
+{
+  "title": "Self-hosting",
+  "description": "Run your own Barazo instance: installation, configuration, and maintenance",
+  "pages": ["index", "---Get started---", "getting-started", "installation", "configuration", "..."]
+}

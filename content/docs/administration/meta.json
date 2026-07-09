@@ -1,0 +1,18 @@
+{
+  "title": "Administration",
+  "description": "Run and moderate a Barazo forum, whether you self-host or use managed hosting",
+  "root": true,
+  "pages": [
+    "index",
+    "---Forum management---",
+    "categories",
+    "topics-and-moderation",
+    "rules",
+    "branding",
+    "content-maturity",
+    "onboarding",
+    "---Hosting---",
+    "self-hosted",
+    "saas"
+  ]
+}

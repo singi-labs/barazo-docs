@@ -10,22 +10,16 @@ const audiences = [
     href: '/docs/using',
   },
   {
+    title: 'Administration',
+    description:
+      'Run and moderate a forum. Categories, moderation, branding, and content maturity, plus self-hosting and managed hosting.',
+    href: '/docs/administration',
+  },
+  {
     title: 'Developer',
     description:
       'Build on the Barazo platform. Lexicon schemas, API reference, plugin development, and AT Protocol integration.',
     href: '/docs/developer',
-  },
-  {
-    title: 'Self-Hosted Admin',
-    description:
-      'Run your own Barazo instance. Docker setup, SSL configuration, backups, upgrades, and server management.',
-    href: '/docs/self-hosted',
-  },
-  {
-    title: 'SaaS Admin',
-    description:
-      'Manage your hosted Barazo community. Billing, custom domains, quotas, and platform-specific settings.',
-    href: '/docs/saas',
   },
 ]
 
@@ -54,7 +48,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-12 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid w-full max-w-4xl gap-4 sm:grid-cols-3">
           {audiences.map((audience) => (
             <Link
               key={audience.href}

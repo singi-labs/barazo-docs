@@ -1,0 +1,23 @@
+---
+title: Self-Hosted Admin Guide
+description: Install, configure, and maintain your own Barazo forum instance with Docker Compose.
+---
+
+This is the self-hosting side of running a Barazo forum: getting it onto your own server and keeping it running. The day-to-day management of the forum itself (categories, moderation, branding, and the rest) is the same wherever it's hosted, and lives under [Administration](/docs/administration).
+
+## Getting started
+
+Barazo runs as a set of Docker containers orchestrated with Docker Compose. You need a Linux server with Docker installed, a domain name, and about 15 minutes.
+
+## In this section
+
+- **Installation**: requirements, Docker Compose setup, environment variables
+- **Configuration**: SSL (Caddy), email (SMTP), storage, and community settings
+- **Backup and restore**: database backups, restore procedures, and disaster recovery
+- **Monitoring**: error tracking, structured logging, health checks
+- **Upgrading**: version upgrades, migration procedures, and changelog
+- **Global aggregator**: connecting your instance to the Barazo network
+
+## Managing the forum itself
+
+Running the community (categories, topics, moderation, rules, branding, maturity, onboarding) works the same whether you self-host or use managed hosting. See [Administration](/docs/administration).
